@@ -70,6 +70,13 @@ mkdir -p "/home/$user"
 chown root:root "/home/$user"
 chmod 755 "/home/$user"
 
+log "Setting the permissions for user specific"
+#chown $user:$gid /project/$user
+mkdir -p /home/$user/input
+chown $user:$gid /home/$user/input
+chmod 755 -R /home/$user/input
+
+
 # Retrieving user id to use it in chown commands instead of the user name
 # to avoid problems on alpine when the user name contains a '.'
 uid="$(id -u "$user")"
